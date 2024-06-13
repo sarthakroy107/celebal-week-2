@@ -10,6 +10,9 @@ function App() {
   );
   const [newTask, setNewTask] = useState<string>("");
   const [error, setError] = useState<string | null>(null);
+  const [filteredTodos, setFilteredTodos] = useState<
+    "all" | "done" | "not done"
+  >("all");
 
   const addTodo = () => {
     if (!newTask) {
@@ -136,19 +139,47 @@ function App() {
         </div>
         {error && <div className="text-red-500 mt-2">{error}</div>}
         <div>
-          {todos.map((todo, index) => (
-            <div key={index} className="mt-3">
-              <DisPlayTextComponent
-                moveUp={moveTop}
-                moveDown={moveDown}
-                markAsDone={markAsDone}
-                editTodo={editTodo}
-                todo={todo}
-                index={index}
-                deleteTodo={deleteTodo}
-              />
-            </div>
-          ))}
+          {todos
+            .filter((todo) =>
+              filteredTodos === "all"
+                ? true
+                : filteredTodos === "done"
+                ? todo.isCompleted
+                : !todo.isCompleted
+            )
+            .map((todo, index) => (
+              <div key={index} className="mt-3">
+                <DisPlayTextComponent
+                  moveUp={moveTop}
+                  moveDown={moveDown}
+                  markAsDone={markAsDone}
+                  editTodo={editTodo}
+                  todo={todo}
+                  index={index}
+                  deleteTodo={deleteTodo}
+                />
+              </div>
+            ))}
+        </div>
+        <div className="flex gap-x-1 justify-around mt-5">
+          <button
+            onClick={() => setFilteredTodos("all")}
+            className={`${ filteredTodos === "all" ? "bg-purple-800" : "bg-purple-600"} p-1.5 rounded-sm w-32`}
+          >
+            All
+          </button>
+          <button
+            onClick={() => setFilteredTodos("done")}
+            className={`${ filteredTodos === "done" ? "bg-purple-800" : "bg-purple-600"} p-1.5 rounded-sm w-32`}
+          >
+            Done
+          </button>
+          <button
+            onClick={() => setFilteredTodos("not done")}
+            className={`${ filteredTodos === "not done" ? "bg-purple-800" : "bg-purple-600"} p-1.5 rounded-sm w-32`}
+          >
+            Not Done
+          </button>
         </div>
       </div>
     </main>

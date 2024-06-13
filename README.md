@@ -7,8 +7,9 @@
 - Delete todo
 - Mark todo as complete
 - Sort todos
+- Filter todos
 
-[![Todo app](https://i.postimg.cc/wvjSP1qH/240613-20h22m13s-screenshot.png)](https://i.postimg.cc/wvjSP1qH/240613-20h22m13s-screenshot.png)
+[![Todo app](https://i.postimg.cc/NjP04J3f/240613-20h51m33s-screenshot.png)](https://i.postimg.cc/NjP04J3f/240613-20h51m33s-screenshot.png)
 
 ---
 
