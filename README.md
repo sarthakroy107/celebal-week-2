@@ -1,5 +1,4 @@
-# React + TypeScript + Vite
-# Tesing Guildelines by Sarthak Roy
+# CSI week 2 assignment
 
 ### Features
 - Persistant todos with local storage
